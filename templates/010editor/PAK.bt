@@ -1,0 +1,36 @@
+//------------------------------------------------
+//--- 010 Editor v8.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+local uint i;
+
+CHAR Magic[4];
+UINT Unknown;
+UINT FileCount;
+
+struct {
+  struct {
+    UINT Length;
+    CHAR FileName[Length];
+    UINT Size;
+    UINT Offset;
+  } FILE_ENTRY[FileCount] <optimize=false>;
+} FILE_ENTRIES;
+
+struct {
+  for (i = 0; i < FileCount; ++i) {
+    struct {
+      FSeek(FILE_ENTRIES.FILE_ENTRY[i].Offset + 4);
+      BYTE Data[FILE_ENTRIES.FILE_ENTRY[i].Size];
+    } FILE;
+  };
+} FILES;
