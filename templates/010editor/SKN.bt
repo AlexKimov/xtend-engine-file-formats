@@ -1,0 +1,124 @@
+//------------------------------------------------
+//--- 010 Editor v8.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+typedef struct {
+  FLOAT U;
+  FLOAT V;
+} VECTOR_2F;
+
+typedef struct {
+  UINT16 I1;
+  UINT16 I2;
+  UINT16 I3;
+} VECTOR_3U16;
+
+typedef struct {
+  FLOAT X;
+  FLOAT Y;
+  FLOAT Z;
+} VECTOR_3F;
+
+typedef struct {
+  FLOAT X;
+  FLOAT Y;
+  FLOAT Z;
+  FLOAT W;
+} VECTOR_4F;
+
+struct {
+  CHAR Magic[4];
+  UINT16 Version;
+  CHAR Name[64];
+  UINT16 MeshCount;
+  UINT16 BoneCount;
+  UINT16 Unknown;
+  UINT Unknown;
+  UINT Offset;
+  UINT Offset;
+} FILE_HEADER;
+
+struct {
+  struct {
+    INT16 Index;
+    UINT16 Unknown;
+    CHAR Name[64];
+  } BONE[FILE_HEADER.BoneCount] <optimize=false>;
+} BONE_NAMES;
+
+struct {
+    struct {
+    CHAR Name[68];
+
+    UINT16 VertexCount;
+    UINT16 FaceCount;
+    UINT16 Count;
+    UINT16 VertexCount2;
+    UINT FaceCount2;
+
+    UINT Unknown; // offest??
+    UINT DataSize;
+    UINT Offset0;
+    UINT Offset1;
+    UINT Offset2;
+    UINT Offset3;
+  } HEADER;
+
+  struct {
+    VECTOR_3U16 Indexes;
+  } FACE_INDEXES[HEADER.FaceCount]; 
+
+  struct {
+    struct {
+      FLOAT X;
+      FLOAT Y;
+      FLOAT Z;
+      FLOAT U;
+      FLOAT V;
+      FLOAT Unknown;
+      FLOAT Unknown;
+      FLOAT Unknown;
+      FLOAT Unknown;
+      FLOAT Unknown;
+      FLOAT Unknown;
+      FLOAT Unknown;
+      FLOAT Unknown;
+      FLOAT Unknown;
+
+      UINT16 CountY;
+      UINT16 Unknown;
+
+      struct {
+        UINT16 Unknown;
+        UINT16 Unknown;
+        FLOAT Unknown;
+
+        VECTOR_3F Position;
+      } UNK_[CountY];
+    } VERTEX_ATTRIBUTE[HEADER.VertexCount] <optimize=false>;
+  } VERTEXES;
+
+  struct {
+    UINT16 Index[HEADER.VertexCount];
+  } INDEXES_;  
+
+  struct {
+    VECTOR_3U16 Indexes;
+  } Face_Data[HEADER.FaceCount2]; 
+
+  struct {
+    UINT16 Bone_Indexes[6];
+    FLOAT Vertex_Weights[6];
+    VECTOR_3F Vertex_Coordinates[6];
+  } VERTEX_DATA[HEADER.VertexCount2];
+} MESH[FILE_HEADER.MeshCount] <optimize=false>;
+
