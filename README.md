@@ -9,7 +9,7 @@ X-tend game engine: file formats and tools.
 
 | № | Format       | Template name     | Progress     | Specs | Description |
 | :--- | :--------- | :----------- | :---------- | :---------- | :---------- |
-| 1 | .pak        | [PAK.bt](https://github.com/AlexKimov/xtend-engine-file-formats/tree/master/templates/010editor/PAK.bt)        | **100%**      |          |  models |
+| 1 | .pak        | [PAK.bt](https://github.com/AlexKimov/xtend-engine-file-formats/tree/master/templates/010editor/PAK.bt)        | **100%**      |          |  game archive |
 | 2 | .skn        | [SKN.bt](https://github.com/AlexKimov/xtend-engine-file-formats/tree/master/templates/010editor/SKN.bt)        | **85%**      |          |  models |
 | 3 | .san        | [SAN.bt](https://github.com/AlexKimov/xtend-engine-file-formats/tree/master/templates/010editor/SAN.bt)        | **85%**      |          |  animations |
 
