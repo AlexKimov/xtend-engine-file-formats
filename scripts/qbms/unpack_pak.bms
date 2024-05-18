@@ -1,0 +1,13 @@
+IDString "PAK\x20" 
+
+get unk long
+get FILES long
+
+for i = 0 < FILES
+    get LENGTH long
+    getdstring FNAME LENGTH
+    get FSIZE long    
+    get OFFSET long
+    math OFFSET += 4
+    log FNAME OFFSET FSIZE
+next i
